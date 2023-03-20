@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="2023-03-20-create_table_spettatore-001" author="LL">
+        <comment>CREATE TABLE SPETTATORE</comment>
+        <createTable tableName="spettatore">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="pk_spettatore"/>
+            </column>
+            <column name="nome" type="VARCHAR(100)"/>
+            <column name="cognome" type="VARCHAR(100)"/>
+            <column name="dataDiNascita" type="DATE"/>
+            <column name="genere" type="VARCHAR(100)"/>
+            <column name="idBiglietto" type="BIGINT">
+                <constraints nullable="false" foreignKeyName="fk_biglietti"
+                             references="biglietto(id)"/>
+            </column>
+
+        </createTable>
+        <rollback>
+            <dropTable tableName="spettatore"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="2023-03-03-create_table_spettatore-002" author="LL">
+        <addNotNullConstraint tableName="spettatore" columnName="nome" columnDataType="VARCHAR(100)"/>
+        <rollback>
+            <dropNotNullConstraint tableName="spettatore" columnName="nome"/>
+        </rollback>
+    </changeSet>
+    <changeSet id="2023-03-03-create_table_spettatore-003" author="LL">
+        <addNotNullConstraint tableName="spettatore" columnName="cognome" columnDataType="VARCHAR(100)"/>
+        <rollback>
+            <dropNotNullConstraint tableName="spettatore" columnName="cognome"/>
+        </rollback>
+    </changeSet>
+    <changeSet id="2023-03-03-create_table_spettatore-004" author="LL">
+        <addNotNullConstraint tableName="spettatore" columnName="dataDiNascita" columnDataType="DATE"/>
+        <rollback>
+            <dropNotNullConstraint tableName="spettatore" columnName="dataDiNascita"/>
+        </rollback>
+    </changeSet>
+
+
+</databaseChangeLog>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="2023-03-20-create_table_biglietto-001" author="LL">
+        <comment>CREATE TABLE BIGLIETTO</comment>
+        <createTable tableName="biglietto">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="pk_biglietto"/>
+            </column>
+
+            <column name="postoASedere" type="BIGINT"/>
+            <column name="prezzo" type="FLOAT"/>
+        </createTable>
+        <rollback>
+            <dropTable tableName="biglietto"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="2023-03-03-create_table_biglietto-002" author="LL">
+        <addNotNullConstraint tableName="biglietto" columnName="postoASedere" columnDataType="BIGINT"/>
+        <rollback>
+            <dropNotNullConstraint tableName="biglietto" columnName="postoASedere"/>
+        </rollback>
+    </changeSet>
+    <changeSet id="2023-03-03-create_table_biglietto-003" author="LL">
+        <addNotNullConstraint tableName="biglietto" columnName="prezzo" columnDataType="FLOAT"/>
+        <rollback>
+            <dropNotNullConstraint tableName="biglietto" columnName="prezzo"/>
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>

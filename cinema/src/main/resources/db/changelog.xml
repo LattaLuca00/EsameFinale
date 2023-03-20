@@ -3,9 +3,10 @@
                    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
     <include file="/db/changelogs/2023-03-20-create_table_biglietto.xml"/>
-    <include file="/db/changelogs/2023-03-20-create_table_cinema.xml"/>
     <include file="/db/changelogs/2023-03-20-create_table_film.xml"/>
-    <include file="/db/changelogs/2023-03-20-create_table_salacinematografica.xml"/>
     <include file="/db/changelogs/2023-03-20-create_table_spettatore.xml"/>
+    <include file="/db/changelogs/2023-03-20-create_table_salacinematografica.xml"/>
+    <include file="/db/changelogs/2023-03-20-create_table_cinema.xml"/>
+    <include file="/db/changelogs/2023-03-20-create_table_user.xml"/>
 
 </databaseChangeLog>

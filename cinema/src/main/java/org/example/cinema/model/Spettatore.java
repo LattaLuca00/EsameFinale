@@ -2,6 +2,7 @@ package org.example.cinema.model;
 
 import lombok.*;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Data
@@ -9,12 +10,24 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+@Entity
+@Table
 public class Spettatore {
-    private int idSpettatore;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     private String nome;
     private String cognome;
+    @Column(name = "datadinascita")
     private LocalDate dataDiNascita;
+
+    @Transient
+    private int idBiglietto;
+
+    @ManyToOne
+    @JoinColumn(name = "idbiglietto")
     private Biglietto biglietto;
+    @Transient
     private Boolean maggiorenne;
 
     public int getAge() {

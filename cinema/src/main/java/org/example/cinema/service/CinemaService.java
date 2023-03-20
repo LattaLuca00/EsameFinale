@@ -1,8 +1,9 @@
 package org.example.cinema.service;
 
 import org.example.cinema.model.Cinema;
+import org.example.cinema.model.GenericResponse;
 
 public interface CinemaService {
 
-    public float calcolaSommaDiIncassi(Cinema cinema);
+    public GenericResponse<Float> calcolaSommaDiIncassi(int idCinema);
 }

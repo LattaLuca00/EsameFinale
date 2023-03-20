@@ -2,15 +2,14 @@ package org.example.cinema.service;
 
 import org.example.cinema.exceptions.FilmVietatoAiMinoriException;
 import org.example.cinema.exceptions.SalaAlCompletoException;
-import org.example.cinema.model.SalaCinematografica;
-import org.example.cinema.model.Spettatore;
+import org.example.cinema.model.GenericResponse;
 
 public interface SalaCinematograficaService {
 
-    public void svuotaSala(SalaCinematografica salaCinematografica);
+    public boolean svuotaSala();
 
-    public void inserisciSpettatore(SalaCinematografica salaCinematografica, Spettatore spettatore) throws SalaAlCompletoException, FilmVietatoAiMinoriException;
+    public void inserisciSpettatore( int idSpettatore,int idSala) throws SalaAlCompletoException, FilmVietatoAiMinoriException;
 
-    public float calcolaIncasso(SalaCinematografica salaCinematografica);
+    public GenericResponse<Float> calcolaIncasso(int idSala);
 
 }
