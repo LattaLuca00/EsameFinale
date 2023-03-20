@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="2023-03-20-create_table_cinema-001" author="LL">
+        <comment>CREATE TABLE CINEMA</comment>
+        <createTable tableName="cinema">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="pk_authors"/>
+            </column>
+            <column name="nome" type="VARCHAR(100)"/>
+            <column name="cognome" type="VARCHAR(100)"/>
+        </createTable>
+        <rollback>
+            <dropTable tableName="authors"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="2023-03-03-create_table_authors-002" author="LL">
+        <addNotNullConstraint tableName="authors" columnName="nome" columnDataType="VARCHAR(100)"/>
+        <rollback>
+            <dropNotNullConstraint tableName="authors" columnName="nome"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="2023-03-03-create_table_authors-003" author="LL">
+        <addNotNullConstraint tableName="authors" columnName="cognome" columnDataType="VARCHAR(100)"/>
+        <rollback>
+            <dropNotNullConstraint tableName="authors" columnName="cognome"/>
+        </rollback>
+    </changeSet>
+</databaseChangeLog>
